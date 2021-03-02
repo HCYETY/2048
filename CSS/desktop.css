@@ -8,15 +8,17 @@
 body {
 	background-color: #ffffe0;
 }
-.box{
-    width: 441px;
-    height: 441px;
+#grid-container{
+    width: 491px;
+    height: 491px;
     /* margin: 50px auto; */
     border: 10px dashed skyblue;
 }
-div{
-    width: 100px;
-    height: 100px;
+.grid-cell{
+    width: 110px;
+    height: 110px;
     border: 5px solid rgb(54, 226, 54);
     float: left;
+    margin: 1px;
+    border-radius: 6px;
 }
