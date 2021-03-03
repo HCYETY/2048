@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <title>Play 2048 Game Online!</title>
     <link rel="stylesheet" href="CSS/desktop.css">
-    <script src="JavaScript/js.js"></script>
+    <script src="JavaScript/PC.js"></script>
+    <script src="JavaScript/initialization.js"></script>
+    <script src="JavaScript/gameOver.js"></script>
 </head>
 <body>
+    <div id="head">
+        <div class="head-y">
+            <div class="num">2048</div>
+            <div class="word">Play 2048 Game Online!</div>
+            <div class="word2">Join the numbers and get to the 2048 title.</div>
+        </div>
+        <div class="head-x">
+            <p>SCORE</p>
+            <span class="score">0</span>
+        </div>
+        <div class="head-x">
+            <p>BEST</p>
+            <span class="bestScore">0</span>
+        </div>
+            <button class="head-y2">New Game</button>
+    </div>
     <div id="grid-container">
         <div class="grid-cell" id="grid-cell-0-0"></div>
         <div class="grid-cell" id="grid-cell-0-1"></div>
