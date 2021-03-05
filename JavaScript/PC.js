@@ -1,19 +1,82 @@
 // PC端的兼容,绑定keydown事件
+
+
 // 键盘左右移动控制方格
 document.onkeydown = function(event) {
     var e = event || window.event || arguments.callee.caller.arguments[0];
     switch(e.keyCode) {
         case 38 || 87: // 上移
-            game.moveUp();
-            break;
+            if(!canMoveUp) {
+                break;
+            } else {
+                game.moveUp();
+                break;
+            }
         case 40 || 83: // 下移
-            game.moveDown();
-            break;
+            if(!canMoveDown) {
+                break;
+            } else {
+                game.moveDown();
+                break;
+            }
         case 37 || 65: // 左移
-            game.moveLeft();
-            break;
+            if(!canMoveLeft) {
+                break;
+            } else {
+                game.moveLeft();
+                break;
+            }
         case 39 || 68: // 右移
-            game.moveRight();
-            break;
+            if(!canMoveRight) {
+                break;
+            } else {
+                game.moveRight();
+                break;
+            }
     }
 }
+// 上移事件
+// a、判断格子是否可以上移
+function canMoveUp() {
+    for(var i=1; i<4; i++) {
+        for(var j=0; j<4; j++) {
+            if(date[i][j]!=0) {
+                if(date[i-1][j]==0 || date[i-1][j]==date[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+// b、判断竖直方向上两个格子之间有没有障碍物
+function noBlockVertical(col, fromRow, toRow) {
+    for(var i=fromRow+1; i<toRow; i++) {
+        if(date[i][col]!=0) {
+            return false;   
+        }
+    }
+    return true;
+}
+// c、怎么上移
+function moveUp() {
+    for(var j=0; j<4; j++) {
+        for(var i=1; i<4; i++) {
+            if(date[i][j]!=0) {
+                for(var t=0; t<i; t++) {
+                    if(date[t][j]== 0 && noBlockVertical(j, t, i)) {
+                        date[t][i] = date[i][j];
+                        date[i][j] = 0;
+                        break;
+                    } else if(date[t][j]==date[i][j] && noBlockVertical(j, t, i)) {
+                        date[t][j] += date[i][j];
+                        date[i][j] = 0;
+                        console.log(t)
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+

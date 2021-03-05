@@ -26,7 +26,7 @@ function start() {
 }
 // a、生成随机数2、4
 function randomNumber() {
-    for( ; ; ) {
+    while(1) {
         row = Math.floor(Math.random()*4); // 获取行的随机数，并取整
         column = Math.floor(Math.random()*4); // 获取列的随机数，并取整
         if(this.date[row][column] == 0) {
@@ -34,6 +34,8 @@ function randomNumber() {
             this.date[row][column] = num; // 将随机产生的数值赋给data的随机位置上
         } else {
             break; // 退出循环
+            // row = random(0, 3);
+			// column = random(0, 3);
         }
     }
 }
@@ -43,7 +45,7 @@ function dateView() {
         for(var column=0; column<4; column++) {
             var div = document.getElementById("grid-cell-" + row + "-" + column);
             // 获取数组里面的相对应数的位置的ID
-            if(this.date[row][column] == 0) {
+            if(date[row][column] == 0) {
                 div.innerText = "";
                 div.className = 'grid-cell';
                 
