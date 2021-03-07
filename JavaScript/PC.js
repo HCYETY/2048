@@ -8,34 +8,33 @@ document.onkeydown = function(event) {
         case 38: // 上移
         case 87: // 上移
             if(!canMoveUp()) {
-                break;
+                return false;
             } else {
-                
                 moveUp();
                 break;
             }
         case 40: // 下移
         case 83: // 下移
             if(!canMoveDown()) {
-                break;
+                return false;
             } else {
-                game.moveDown();
+                moveDown();
                 break;
             }
         case 37: // 左移
         case 65: // 左移
             if(!canMoveLeft()) {
-                break;
+                return false;
             } else {
-                game.moveLeft();
+                moveLeft();
                 break;
             }
         case 39: // 右移
         case 68: // 右移
             if(!canMoveRight()) {
-                break;
+                return false;
             } else {
-                game.moveRight();
+                moveRight();
                 break;
             }
     }
@@ -63,28 +62,29 @@ function moveUp() {
                     if(date[t][j]== 0 && noBlockVertical(j, t, i)) {
                         date[t][i] = date[i][j];
                         date[i][j] = 0;
-                        alert('game.date[t][j]')
-                        console.log(t)
-                        console.log(j)
-                        console.log(date[t][j])
-                        console.log(t)
-                        console.log(i)
                         break;
                     } else if(date[t][j]==date[i][j] && noBlockVertical(j, t, i)) {
-                        date[t][j] += date[i][j];
-                        date[i][j] = 0;
+                        if(sign[t][j]==0) {
+                            date[t][j] += date[i][j];
+                            date[i][j] = 0;
+                            sign[t][j] = 1;
+                        } else {
+                            date[t+1][j] = date[i][j];
+							date[i][j] = 0;
+                        }
                         break;
                     }
                 }
             }
         }
     }
+    return true;
 }
 // 下移事件
 // a、判断格子是否可以下移
-function canMoveUp() {
-    for(var i=0; i<4; i++) {
-        for(var j=1; j<4; j++) {
+function canMoveDown() {
+    for(var i=2; i>=0; i--) {
+        for(var j=0; j<4; j++) {
             if(date[i][j]!=0) {
                 if(date[i+1][j]==0 || date[i+1][j]==date[i][j]) {
                     return true;
