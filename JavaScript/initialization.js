@@ -1,9 +1,14 @@
 // 界面的基础显示部分
 
-
+var date = new Array([],[]); // 建立空数组存放游戏数据
+// for(var i=0; i<date.length; i++) {
+//     date[i] = new Array();
+// }
+var sign = new Array([],[]); // 建立空数组标记合并过的格子
+// for(var j=0; j<sign.length; j++) {
+//     date[j] = new Array();
+// }
 var game = {
-    date:[], // 建立空数组存放游戏数据
-    sign:[], // 建立空数组标记合并过的格子
     score:0, // 记录分数
     maxScore:0, // 记录最大分数
     Rscore:0, // 实时得分
@@ -16,13 +21,13 @@ randomNumber();
 randomNumber();
 dateView();
 function start() {
-    this.status = this.gameRunning;
-    this.score = 0; // 游戏初始分数为0
-    this.date = [];
-    for(var row=0; row<4; row++) {
-        this.date[row] = [];
-        for(var column=0; column<4; column++) {
-            this.date[row][column] = 0; // 将数组初始化
+    status = this.gameRunning;
+    score = 0; // 游戏初始分数为0
+    date = [];
+    for(row=0; row<4; row++) {
+        date[row] = [];
+        for(column=0; column<4; column++) {
+            date[row][column] = 0; // 将数组初始化
         }
     }
 }
@@ -41,19 +46,18 @@ function randomNumber() {
     var num = Math.random() < 0.3 ? 2 : 4; // 0.5说明产生随机数的概率为50%
     date[row][column] = num; // 将随机产生的数值赋给data的随机位置上
 }
-// b、在获取到随机数后我们要将随机数放到这些格子中去
+// b、将随机数获取到格子中去
 function dateView() {
-    for(var row=0; row<4; row++) {
-        for(var column=0; column<4; column++) {
+    for(row=0; row<4; row++) {
+        for(column=0; column<4; column++) {
             var div = document.getElementById("grid-cell-" + row + "-" + column);
             // 获取数组里面的相对应数的位置的ID
             if(date[row][column] == 0) {
                 div.innerText = "";
-                div.className = 'grid-cell';
-                
+                // div.className = 'grid-cell';
             } else {
-                div.innerText = this.date[row][column];
-                div.className = 'grid-cell n'+this.date[row][column];
+                div.innerText = date[row][column];
+                // div.className = 'grid-cell n'+date[row][column];
             }
         }
     }
