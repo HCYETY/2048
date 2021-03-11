@@ -1,8 +1,8 @@
-// function showNumberEffect(i,j,number) {
-//     var numberCell = document.getElementById("grid-cell-" + i + "-" + j);	
-// 	numberCell.css("background-color", numberBoxColor(number));
-// 	numberCell.css("color", numberColor(number));
-// }
+function showNumberEffect(i,j,number) {
+    var numberCell = document.getElementById('grid-cell-' + i + '-' + j);	
+	numberCell.css('background-color', numberBoxColor(number));
+	numberCell.css('color', numberColor(number));
+}
 
 // 数字格子的背景颜色
 function numberBoxColor(number) {

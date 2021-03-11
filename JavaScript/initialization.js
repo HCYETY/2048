@@ -40,7 +40,7 @@ function randomNumber() {
     }
     var num = Math.random() < 0.3 ? 2 : 4; // 0.5说明产生随机数的概率为50%
     date[row][column] = num; // 将随机产生的数值赋给data的随机位置上
-    // showNumberEffect(row,column,num);
+    showNumberEffect(row,column,num);
     return true;
 }
 // b、将随机数获取到格子中去
