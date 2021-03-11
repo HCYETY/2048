@@ -27,6 +27,7 @@ function start() {
 }
 // a、生成随机数2、4
 function randomNumber() {
+    if (noSpace()) return false; //判断是否还有空格子
     row = Math.floor(Math.random()*4); // 获取行的随机数，并取整
     column = Math.floor(Math.random()*4); // 获取列的随机数，并取整
     while(1) {
@@ -39,6 +40,8 @@ function randomNumber() {
     }
     var num = Math.random() < 0.3 ? 2 : 4; // 0.5说明产生随机数的概率为50%
     date[row][column] = num; // 将随机产生的数值赋给data的随机位置上
+    // showNumberEffect(row,column,num);
+    return true;
 }
 // b、将随机数获取到格子中去
 function dateView() {
@@ -55,25 +58,4 @@ function dateView() {
             }
         }
     }
-}
-// 判断游戏结束
-function gameOver() {
-    for(var r=0; r<4; r++) { // 对行进行遍历
-        for(var c=0; c<4; c++) { // 对列进行遍历
-            if(this.date[r][c] == 0) { // 看数组中是否有空位
-                return false; // 游戏不结束
-            }
-            if(c<3) {
-                if(this.date[r][c] == this.date[r][c+1]) { // 判断每一行左右是否有相等的值,每一行r不变,c+1
-                    return false; // 游戏不结束
-                }
-            }
-            if(r<3) {
-                if(this.date[r][c] == this.date[r+1][c]) { // 判断每一行上下是否有相等的值,每一行r+1,c不变
-                    return false; // 游戏不结束
-                }
-            }
-        }
-    }
-    return true; // 全部判断完了，游戏结束
 }

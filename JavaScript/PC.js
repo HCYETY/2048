@@ -61,15 +61,15 @@ function moveUp(){
 						break;
 					}
 					else if(date[t][j] == date[i][j] && noBlockVertical(j, t, i)){  
-						if(sign[t][j] == 0){                              
+						// if(sign[t][j] == 0){                              
 							date[t][j] += date[i][j];
 						    date[i][j] = 0;
-							sign[t][j] = 1;
-						}
-						else{                   
-							date[t+1][j] = date[i][j];
-							date[i][j] = 0;
-						}
+							// sign[t][j] = 1;
+						// }
+						// else{                   
+						// 	date[t+1][j] = date[i][j];
+							// date[i][j] = 0;
+						// }
 						break;
 					}
 				}
@@ -104,15 +104,15 @@ function moveDown(){
 						break;
 					}
 					else if(date[t][j] == date[i][j] && noBlockVertical(j, i, t)){  
-						if(sign[t][j] == 0){                               
+						// if(sign[t][j] == 0){                               
 							date[t][j]+= date[i][j];
 						    date[i][j]= 0;
-							sign[t][j]= 1;
-						}
-						else{                   
-							date[t-1][j] = date[i][j];
-							date[i][j] = 0;
-						}
+							// sign[t][j]= 1;
+						// }
+						// else{                   
+							// date[t-1][j] = date[i][j];
+							// date[i][j] = 0;
+						// }
 						break;
 					}
 				}
@@ -163,15 +163,15 @@ function moveLeft(){
 						break;
 					}
 					else if(date[i][t] == date[i][j] && noBlockHorizontal(i, t, j)){  
-						if(sign[i][t] == 0){
+						// if(sign[i][t] == 0){
 							date[i][t]+= date[i][j];
 						    date[i][j]= 0;
-							sign[i][t]= 1;
-						}
-						else{
-							date[i][t+1] = date[i][j];
-							date[i][j] = 0;
-						}
+						// 	sign[i][t]= 1;
+						// }
+						// else{
+						// 	date[i][t+1] = date[i][j];
+						// 	date[i][j] = 0;
+						// }
 						break;
 					}
 				}
@@ -206,16 +206,16 @@ function moveRight(){
 						break;
 					}
 					else if(date[i][t] == date[i][j] && noBlockHorizontal(i, j, t)){  
-						if(sign[i][t] == 0){
+						// if(sign[i][t] == 0){
 							date[i][t] += date[i][j];
 							// score+= val[i][t];
 						    date[i][j]= 0;
-							sign[i][t]= 1;
-						}
-						else{                   
-							date[i][t-1] = date[i][j];
-							date[i][j] = 0;
-						}
+						// 	sign[i][t]= 1;
+						// }
+						// else{                   
+						// 	date[i][t-1] = date[i][j];
+						// 	date[i][j] = 0;
+						// }
 						break;
 					}
 				}
