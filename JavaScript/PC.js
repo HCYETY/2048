@@ -9,22 +9,22 @@ document.onkeydown = function(event) {
         case 87: // 上移
             if(!canMoveUp()) {return false;}
             moveUp();
-            break;
+			break;
         case 40: // 下移
         case 83: // 下移
             if(!canMoveDown()) {return false;}
             moveDown();
-            break;
+			break;
         case 37: // 左移
         case 65: // 左移
             if(!canMoveLeft()) {return false;}
             moveLeft();
-            break;
+			break;
         case 39: // 右移
         case 68: // 右移
             if(!canMoveRight()) {return false;}
             moveRight();
-            break;
+			break;
         default: 
 			return
     }
@@ -33,6 +33,16 @@ document.onkeydown = function(event) {
         randomNumber();
     },200);
 }
+
+//恢复判断是否要合并的add数组为初始状态
+// function initsign(){
+// 	for(var i=0; i<4; i++){
+// 		for(var j=0; j<4; j++){
+// 			sign[i][j] = 0;
+// 			break;
+// 		}
+// 	}
+// }
 
 // 上移事件
 // a、判断格子是否可以上移
@@ -51,24 +61,29 @@ function canMoveUp() {
 // b、怎么上移
 //向上移动
 function moveUp(){
+	// initsign();
 	for(var j=0; j<4; j++){
 		for(var i=1; i<4; i++){
 			if(date[i][j] != 0 ){
 				for(var t=0; t<i; t++){
-					if(date[t][j] == 0 && noBlockVertical(j, t, i)){                   
+					if(date[t][j] == 0 && noBlockVertical(j, t, i)){  
+						// showMoveEffect(i, j) ;          
+						showNumberEffect(i,j,number);      
 					    date[t][j] = date[i][j];
 						date[i][j] = 0;
 						break;
 					}
 					else if(date[t][j] == date[i][j] && noBlockVertical(j, t, i)){  
-						// if(sign[t][j] == 0){                              
+						// if(sign[t][j] == 0) {        
+							// showMoveEffect(i, j) ;                   
 							date[t][j] += date[i][j];
 						    date[i][j] = 0;
+							score += date[t][j];
 							// sign[t][j] = 1;
 						// }
 						// else{                   
 						// 	date[t+1][j] = date[i][j];
-							// date[i][j] = 0;
+						// 	date[i][j] = 0;
 						// }
 						break;
 					}
@@ -94,24 +109,28 @@ function canMoveDown() {
 }
 // b、怎么下移
 function moveDown(){
+	// initsign();
 	for(var j=0; j<4; j++){
 		for(var i=2; i>=0; i--){
 			if(date[i][j] != 0 ){
 				for(var t=3; t>i; t--){
-					if(date[t][j] == 0 && noBlockVertical(j, i, t)){                 
+					if(date[t][j] == 0 && noBlockVertical(j, i, t)){      
+						// showMoveEffect(i, j) ;           
 					    date[t][j] = date[i][j];
 						date[i][j] = 0;
 						break;
 					}
 					else if(date[t][j] == date[i][j] && noBlockVertical(j, i, t)){  
-						// if(sign[t][j] == 0){                               
-							date[t][j]+= date[i][j];
-						    date[i][j]= 0;
-							// sign[t][j]= 1;
+						// if(sign[t][j] == 0){                       
+							// showMoveEffect(i, j) ;        
+							date[t][j] += date[i][j];
+						    date[i][j] = 0;
+							score += date[t][j];
+						// 	sign[t][j] = 1;
 						// }
 						// else{                   
-							// date[t-1][j] = date[i][j];
-							// date[i][j] = 0;
+						// 	date[t-1][j] = date[i][j];
+						// 	date[i][j] = 0;
 						// }
 						break;
 					}
@@ -153,26 +172,30 @@ function canMoveLeft() {
 }
 // b、怎么左移
 function moveLeft(){
+	// initsign();
 	for(var i=0; i<4; i++){
 		for(var j=1; j<4; j++){
 			if(date[i][j] != 0 ){
 				for(var t=0; t<j; t++){
 					if(date[i][t] == 0 && noBlockHorizontal(i, t, j)){
+						// showMoveEffect(i, j) ;
 					    date[i][t] = date[i][j];
 						date[i][j] = 0;
 						break;
 					}
 					else if(date[i][t] == date[i][j] && noBlockHorizontal(i, t, j)){  
 						// if(sign[i][t] == 0){
+							// showMoveEffect(i, j) ;
 							date[i][t]+= date[i][j];
 						    date[i][j]= 0;
-						// 	sign[i][t]= 1;
+							score += date[i][t];
+						// 	sign[i][t] = 1;
 						// }
 						// else{
 						// 	date[i][t+1] = date[i][j];
 						// 	date[i][j] = 0;
 						// }
-						break;
+						// break;
 					}
 				}
 			}
@@ -196,21 +219,24 @@ function canMoveRight() {
 }
 // b、怎么右移
 function moveRight(){
+	// initsign();
 	for(var i=0; i<4; i++){
 		for(var j=2; j>=0; j--){
 			if(date[i][j] != 0 ){
 				for(var t=3; t>j; t--){
-					if(date[i][t] == 0 && noBlockHorizontal(i, j, t)){               
+					if(date[i][t] == 0 && noBlockHorizontal(i, j, t)){ 
+						// showMoveEffect(i, j) ;              
 					    date[i][t] = date[i][j];
 						date[i][j] = 0;
 						break;
 					}
 					else if(date[i][t] == date[i][j] && noBlockHorizontal(i, j, t)){  
 						// if(sign[i][t] == 0){
+							// showMoveEffect(i, j) ;
 							date[i][t] += date[i][j];
-							// score+= val[i][t];
 						    date[i][j]= 0;
-						// 	sign[i][t]= 1;
+							score += date[i][t];
+						// 	sign[i][t] = 1;
 						// }
 						// else{                   
 						// 	date[i][t-1] = date[i][j];

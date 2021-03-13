@@ -36,3 +36,7 @@ function gameOver() {
     }
     return true; // 全部判断完了，游戏结束
 }
+//游戏结束
+function isGameOver(){
+	if(noSpace() && noMove()) gameOver();
+}
