@@ -1,0 +1,8 @@
+- 引用外部js文件时，将其放在head处，影响了渲染效果
+- this的指向不明确，最好统一命名
+- 二维数组的构建问题
+- 生成随机数时没有及时跳出while循环语句，导致生成不可控制的多个随机数
+- 将随机数获取到格子中去时将innerText用成了InnerHtml
+- 移动格子数组的数据错误
+- Uncaught TypeError: Cannot read property '3' of undefined
+- js修改css样式时（这个样式是随条件改变而改变的）想调用函数去修改，需要借助jQuery
