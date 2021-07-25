@@ -8,12 +8,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .whole{
-    width: 40%;
+    width: 30%;
     height: 100%;
-    border: 5px black solid;
-    text-align: center;
+    border: 6px solid rgb(24, 1, 1);
 }
 
 /* 头部 */
@@ -24,32 +24,14 @@ body{
 }
 .header_left{
     float: left;
-    /* border: 3px solid skyblue; */
+}
+.topic{
+    font-size: 2em;
 }
 .header_right{
     margin-top: 10px;
     margin-right: 20px;
     float: right;
-    /* border: 3px solid blue; */
-}
-.topic{
-    font-size: 2em;
-}
-
-/* 主体 */
-.center{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 8px 8px;
-    margin-top: 30px;
-    border-top: 3px solid black;
-}
-.grid-cell{
-    background-color: cadetblue;
-    width: 100%;
-    height: 100%;
-    font-size: 3em;
 }
 #btn{
     width: 140px;
@@ -61,4 +43,23 @@ body{
     box-shadow: darkgray;
     border-radius: 8px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* 主体 */
+.center{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 100px);
+    gap: 8px 8px;
+    margin-top: 30px;
+    border-top: 4px solid black;
+    background-color: rgba(175, 116, 49, 0.582);
+    /* background-color: rgba(255, 136, 0, 0.582); */
+}
+.grid-cell{
+    width: 100%;
+    height: 100%;
+    line-height: 100px; /* 实现数字垂直居中 */
+    border: 1px solid black;
+    font-size: 2em;
 }
