@@ -27,7 +27,7 @@ function randomNumber() {
             col = Math.floor(Math.random() * 4);
         }
     }
-    let num = Math.random() < 0.3 ? 4 : 2;
+    let num = Math.random() < 0.4 ? 4 : 2;
     date[row][col] = num;
     showNumber(row, col);
 }
